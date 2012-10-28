@@ -1,5 +1,5 @@
 <p>
-  <b><%= comment.commenter %></b> commented on <%= comment.created_at %>
+  <b><%= comment.commenter %></b> commented on <%= humanize_date(comment.created_at) %>
 </p>
 
 <p><%= comment.body %></p>
