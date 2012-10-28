@@ -11,3 +11,22 @@
  *= require_self
  *= require_tree .
  */
+
+body {
+    background-color: black;
+    background-image: url(/assets/rails.png);
+}
+
+div.content_container, div.nav_bar_container {
+    width: 70%;
+    background: #EEEEEE;
+    margin: auto;
+}
+
+div.content {
+    padding: 2%;
+}
+
+div.nav_bar {
+    padding: 1%;
+}
