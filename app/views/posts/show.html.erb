@@ -8,7 +8,7 @@
   <b>Tags:</b>
   <%= join_tags @post %>
 </p>
-
+<hr />
 <h2><%= "Comments (#{ @post.comments.count })"%></h2>
 <%= render @post.comments %>
 
