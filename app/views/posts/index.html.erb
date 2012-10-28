@@ -7,6 +7,9 @@
 	<h2><%= post.name %></h2>
 	<h3><%= post.title %></h3>
 	<p><%= post.content %></p>
+	<div class="num_comments">
+	  <b><%= "Comments (#{ post.comments.count})"%></b>
+	</div>
 	<div class="index_actions">
 	  <%= link_to 'Show', post %>
 	  <%= link_to 'Edit', edit_post_path(post) %>
