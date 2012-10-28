@@ -1,12 +1,8 @@
 <p>
-  <b>Commenter:</b>
-  <%= comment.commenter %>
+  <b><%= comment.commenter %></b> commented on <%= comment.created_at %>
 </p>
 
-<p>
-  <b>Comment:</b>
-  <%= comment.body %>
-</p>
+<p><%= comment.body %></p>
 
 <p>
   <%= link_to "Delete", [comment.post, comment], confirm: 'Are you sure?', method: :delete  %>
