@@ -13,14 +13,14 @@
  */
 
 body {
-    background-color: black;
-    background-image: url(/assets/rails.png);
+    background-color: #383838;
 }
 
 div.content_container, div.nav_bar_container {
     width: 70%;
-    background: #EEEEEE;
+    background: #D8D8D8;
     margin: auto;
+    border-radius: 20px;
 }
 
 div.content {
