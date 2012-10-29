@@ -1,9 +1,12 @@
-<p>
-  <b><%= comment.commenter %></b> commented on <%= humanize_date(comment.created_at) %>
-</p>
+<%= div_for comment do %>
+  <p>
+    <b><%= comment.commenter %></b> commented on <%= humanize_date(comment.created_at) %>
+  </p>
 
-<p><%= comment.body %></p>
+  <p><%= comment.body %></p>
 
-<p>
-  <%= link_to "Delete", [comment.post, comment], confirm: 'Are you sure?', method: :delete  %>
-</p>
+  <p>
+    <%= link_to "Delete", [comment.post, comment], confirm: 'Are you sure?', method: :delete, 
+	remote: true  %>
+  </p>
+<% end %>

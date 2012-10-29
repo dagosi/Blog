@@ -1,0 +1,4 @@
+var comment = '<%= escape_javascript(render(@comment)) %>';
+$('div#comments').append($(comment).hide().fadeIn('slow'));
+$('form#new_comment')[0].reset();
+$('h2#num_comments').text("Comments (<%= @post.comments.count %>)");

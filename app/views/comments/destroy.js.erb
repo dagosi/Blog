@@ -1,0 +1,2 @@
+$('#<%= dom_id(@comment) %>').fadeOut();
+$('h2#num_comments').text("Comments (<%= @post.comments.count %>)");

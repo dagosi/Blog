@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     @comment = @post.comments.new(params[:comment])
     
     if @comment.save
-      redirect_to post_path(@post)
+      respond_to :js
     else
       flash[:errors] = @comment.errors
       redirect_to post_path(@post)
@@ -18,6 +18,6 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
     @comment.destroy
-    redirect_to post_path(@post), notice: 'The comment was successfully deleted.'
+    respond_to :js
   end
 end
