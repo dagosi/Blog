@@ -17,6 +17,14 @@
     </div>
     <br/>
 
+    <% if notice || alert %>
+      <div class="messages">
+	<p id="notice"><%= notice %></p>
+	<p id="alert"><%= alert %></p>
+      </div>
+      <br />
+    <% end %>
+    
     <div class="content_container">
       <div class="content">
 	<%= yield %>

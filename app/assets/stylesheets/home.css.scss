@@ -6,7 +6,7 @@ body {
     background-color: #383838;
 }
 
-div.content_container, div.nav_bar_container {
+div.content_container, div.nav_bar_container, div.messages {
     width: 70%;
     background: #D8D8D8;
     margin: auto;
@@ -21,8 +21,12 @@ div.nav_bar {
     padding: 1%;
 }
 
+div.messages {
+    padding: 1px;
+    text-align: center;    
+}
+
 .paginator {
-    
     background: #f1f1f1;
     border: 1px solid #e5e5e5;
     text-align: center;

@@ -1,6 +1,6 @@
 <%= div_for post do %>
   <h2><%= post.title %></h2>
-  <p><%= post.content %></p>
+  <p><%= post.content.truncate(250, separator: ' ') %></p>
   <div class="num_comments">
     <b><%= "Comments (#{ post.comments.count})"%></b>
   </div>
