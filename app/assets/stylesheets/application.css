@@ -11,22 +11,3 @@
  *= require_self
  *= require_tree .
  */
-
-body {
-    background-color: #383838;
-}
-
-div.content_container, div.nav_bar_container {
-    width: 70%;
-    background: #D8D8D8;
-    margin: auto;
-    border-radius: 20px;
-}
-
-div.content {
-    padding: 2%;
-}
-
-div.nav_bar {
-    padding: 1%;
-}
