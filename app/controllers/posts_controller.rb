@@ -2,14 +2,20 @@ class PostsController < ApplicationController
   
   http_basic_authenticate_with name: "daniel", password: "dagosi89*", except: [:index, :show]
 
+  NUM_ELEMENTS_PAGINATION = 5
+
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.paginate(page: params[:page], per_page: 5).order('created_at DESC')
+    @posts = Post.paginate(page: params[:page], per_page: NUM_ELEMENTS_PAGINATION)
+      .order('created_at DESC')
+
+    session[:page] = params[:page]
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @posts }
+      format.js
     end
   end
 
@@ -42,7 +48,6 @@ class PostsController < ApplicationController
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render json: @post, status: :created, location: @post }
-        format.js
       else
         format.html { render action: "new" }
         format.json { render json: @post.errors, status: :unprocessable_entity }
@@ -70,12 +75,14 @@ class PostsController < ApplicationController
   # DELETE /posts/1.json
   def destroy
     @post = Post.find(params[:id])
+    @page_posts = Post.all(order: "created_at DESC")
+    @next_post_pagination = @page_posts[NUM_ELEMENTS_PAGINATION * session[:page].to_i ]
+    
     @post.destroy
 
     respond_to do |format|
-      format.html { redirect_to posts_url }
-      format.json { head :no_content }
       format.js
     end
+
   end
 end

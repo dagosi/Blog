@@ -1,1 +1,5 @@
-$('#<%= dom_id(@post) %>').fadeOut();
+$('#<%= dom_id(@post) %>').fadeOut('fast', function(){
+  <% if @next_post_pagination %>
+    $("#posts").append("<%=j render @next_post_pagination %>");
+  <% end %>
+});

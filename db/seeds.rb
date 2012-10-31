@@ -20,5 +20,13 @@ Ruby supports multiple programming paradigms, including functional, object orien
 
                     { title: "Python programming language",
                       content: "Python is a general-purpose, interpreted high-level programming language whose design philosophy emphasizes code readability. Its syntax is said to be clear and expressive. Python has a large and comprehensive standard library. http://en.wikipedia.org/wiki/Python_(programming_language)",
-                      tags_attributes: [{ name: "Programming" }] }
-                   ])
+                      tags_attributes: [{ name: "Programming" }] }])
+
+for i in 0..1000
+  post = Post.create(
+                     [{ title: "Python #{ i }",
+                        content: "Python is a general-purpose, interpreted high-level programming language whose design philosophy emphasizes code readability. Its syntax is said to be clear and expressive. Python has a large and comprehensive standard library. http://en.wikipedia.org/wiki/Python_(programming_language)",
+                        tags_attributes: [{ name: "Programming" }] },
+
+                     ])
+end
