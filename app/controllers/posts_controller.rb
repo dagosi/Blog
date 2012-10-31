@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
-  
-  http_basic_authenticate_with name: "daniel", password: "dagosi89*", except: [:index, :show]
 
+  before_filter :authenticate_user!, except: [:index, :show, :destroy]
+  
   NUM_ELEMENTS_PAGINATION = 5
 
   # GET /posts
@@ -74,15 +74,15 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
+    
     @post = Post.find(params[:id])
     @page_posts = Post.all(order: "created_at DESC")
     @next_post_pagination = @page_posts[NUM_ELEMENTS_PAGINATION * session[:page].to_i ]
     
     @post.destroy
-
+    
     respond_to do |format|
       format.js
     end
-
   end
 end
