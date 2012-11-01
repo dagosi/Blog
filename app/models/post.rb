@@ -5,7 +5,8 @@ class Post < ActiveRecord::Base
 
   has_many :comments, dependent: :destroy
   has_many :tags, dependent: :destroy
-  
+  belongs_to :user
+
   accepts_nested_attributes_for :tags, allow_destroy: :true,
   reject_if: proc { |attrs| attrs.all? { |k,v| v.blank? } }
 
@@ -19,7 +20,7 @@ class Post < ActiveRecord::Base
   # - The next post to be add to the current page.
   #
   def next_post_pagination(num_elements_pagination, num_page)
-    page_posts = Post.all(order: "created_at DESC")
+    page_posts = current_user.posts(order: "created_at DESC")
     # Gets the index for the next post to be show.
     index = (num_elements_pagination - 1) * num_page.to_i
     page_posts[index]

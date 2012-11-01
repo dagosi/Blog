@@ -1,9 +1,12 @@
 Blog::Application.routes.draw do
   
+  get "tags/index"
+
   devise_for :users
-  
-  resources :posts do
-    resources :comments
+  resources :users do
+    resources :posts do
+      resources :comments
+    end
   end
 
   # The priority is based upon order of creation:

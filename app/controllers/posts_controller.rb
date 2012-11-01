@@ -1,30 +1,36 @@
 class PostsController < ApplicationController
 
-  before_filter :authenticate_user!, except: [:index, :show, :destroy]
+  before_filter :authenticate_user!
   
   NUM_ELEMENTS_PAGINATION = 5
-
+  
+  
   def index
-    @posts = Post.paginate(page: params[:page], per_page: NUM_ELEMENTS_PAGINATION)
+    @user = current_user
+    @posts = @user.posts.paginate(page: params[:page], per_page: NUM_ELEMENTS_PAGINATION)
       .order('created_at DESC')
 
     session[:page] = params[:page]
    end
 
   def show
-    @post = Post.find(params[:id])
+    @user = current_user
+    @post = @user.posts.find(params[:id])
   end
 
   def new
-    @post = Post.new
+    @user = current_user
+    @post = @user.posts.build
   end
   
   def edit
-    @post = Post.find(params[:id])
+    @user = current_user
+    @post = @user.posts.find(params[:id])
   end
 
   def create
-    @post = Post.new(params[:post])
+    @user = current_user
+    @post = @user.posts.build(params[:post])
 
     if @post.save
       redirect_to @post, notice: 'Post was successfully created.'
@@ -34,7 +40,8 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find(params[:id])
+    @user = current_user
+    @post = @user.posts.find(params[:id])
 
     if @post.update_attributes(params[:post])
       redirect_to @post, notice: 'Post was successfully updated.'
@@ -44,7 +51,8 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
+    @user = current_user
+    @post = @user.posts.find(params[:id])
     @post.destroy
     @next_post_pagination = 
       @post.next_post_pagination(NUM_ELEMENTS_PAGINATION, session[:page])
