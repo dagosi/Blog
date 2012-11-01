@@ -33,7 +33,7 @@ class PostsController < ApplicationController
     @post = @user.posts.build(params[:post])
 
     if @post.save
-      redirect_to @post, notice: 'Post was successfully created.'
+      redirect_to [@user, @post], notice: 'Post was successfully created.'
     else
       render action: "new"
     end
@@ -44,7 +44,7 @@ class PostsController < ApplicationController
     @post = @user.posts.find(params[:id])
 
     if @post.update_attributes(params[:post])
-      redirect_to @post, notice: 'Post was successfully updated.'
+      redirect_to [@user, @post], notice: 'Post was successfully updated.'
     else
       render action: "edit"
     end

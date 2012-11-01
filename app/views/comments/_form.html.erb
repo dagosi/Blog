@@ -1,4 +1,4 @@
-<%= form_for([@post, @post.comments.build], remote: true) do |f| %>
+<%= form_for([@user, @post, @post.comments.build], remote: true) do |f| %>
   <% if flash[:errors] %>
     <div id="error_explanation">
       <h2><%= pluralize(flash[:errors].count, "error") %>

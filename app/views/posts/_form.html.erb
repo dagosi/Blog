@@ -1,5 +1,5 @@
 <% @post.tags.build %>
-<%= form_for(@post) do |post_form| %>
+<%= form_for([@user, @post]) do |post_form| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %>
