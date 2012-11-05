@@ -6,9 +6,10 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.new(params[:comment])
-    
+    @comment.commenter = current_user.username
+
     if @comment.save
-      flash[:errors].clear
+      flash.clear
     else
       flash[:errors] = @comment.errors
     end
