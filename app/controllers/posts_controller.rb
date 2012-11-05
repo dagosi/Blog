@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: [:show]
   
   NUM_ELEMENTS_PAGINATION = 5
   
@@ -14,7 +14,6 @@ class PostsController < ApplicationController
    end
 
   def show
-    @user = current_user
     @post = Post.find(params[:id])
   end
 
