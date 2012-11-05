@@ -1,4 +1,10 @@
-var comment = '<%= escape_javascript(render(@comment)) %>';
-$('div#comments').append($(comment).hide().fadeIn('slow'));
-$('form#new_comment')[0].reset();
-$('h2#num_comments').text("Comments (<%= @post.comments.count %>)");
+$('div#error_explanation').remove();
+
+<% if flash[:errors] %>
+    $("form#new_comment").prepend("<%=j render 'form_errors' %>");
+<% else %>
+  var comment = '<%= escape_javascript(render(@comment)) %>';
+  $('div#comments').append($(comment).hide().fadeIn('slow'));
+  $('form#new_comment')[0].reset();
+  $('h2#num_comments').text("Comments (<%= @post.comments.count %>)");
+<% end %>
