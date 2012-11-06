@@ -1,5 +1,7 @@
 Blog::Application.routes.draw do
-  
+  resources :authentications
+
+    match 'auth/:provider/callback' => 'authentications#create'
   get "tags/index"
 
   devise_for :users
