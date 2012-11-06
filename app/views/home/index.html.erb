@@ -4,14 +4,18 @@
   of our services:
 </p>
 
-<%= link_to image_tag("facebook_64.png"), auth_facebook_path %>
-<%= image_tag("twitter_64.png") %>
-
-<p>
-  If you do not have any of these social networks, you can use our simple
-  <%= link_to "sign in", user_session_path %> or
-  <%= link_to "sign up", new_user_registration_path %> forms.
-</p>
+<div id="auth">
+  <%= link_to image_tag("facebook_64.png"), auth_facebook_path %>
+  <%= link_to image_tag("twitter_64.png"), auth_twitter_path %>
+  <div id="right">
+    <p id="auth_links">
+      If you do not have an account in any of these social networks, you can use our simple
+      <%= link_to "sign in", user_session_path %> or
+      <%= link_to "sign up", new_user_registration_path %> forms.
+    </p>
+  </div>
+</div>
+<br />
 <h2>Latests posts:</h2>
 <%= render partial: "posts/post", collection: @posts, as: :post %>
 <%= will_paginate @posts, class: 'paginator' %>
