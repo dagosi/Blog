@@ -1,8 +1,11 @@
 Blog::Application.routes.draw do
   resources :authentications
 
-    match 'auth/:provider/callback' => 'authentications#create'
+  match 'auth/:provider/callback' => 'authentications#create'
   get "tags/index"
+
+  get "auth/facebook", as: :auth_facebook
+  get "auth/twitter", as: :auth_twitter
 
   devise_for :users, controllers: { registrations: 'registrations' }
   resources :users do

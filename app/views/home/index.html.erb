@@ -1,4 +1,17 @@
-<h1>Welcome to Blog!</h1>
+<h1>Welcome to Blogun!</h1>
+<p>
+  If you want to make a post and be part of this community, please sign in or sign up using one
+  of our services:
+</p>
+
+<%= link_to image_tag("facebook_64.png"), auth_facebook_path %>
+<%= image_tag("twitter_64.png") %>
+
+<p>
+  If you do not have any of these social networks, you can use our simple
+  <%= link_to "sign in", user_session_path %> or
+  <%= link_to "sign up", new_user_registration_path %> forms.
+</p>
 <h2>Latests posts:</h2>
 <%= render partial: "posts/post", collection: @posts, as: :post %>
 <%= will_paginate @posts, class: 'paginator' %>
